@@ -9,7 +9,7 @@ public class QuickSort extends SortingAlgorithm {
         if (low < high) {
             int pivot = partition(arr, low, high);
 
-            //recursively sort the partitions
+            // recursively sort the partitions
             quickSort(arr, low, pivot - 1);
             quickSort(arr, pivot + 1, high);
         }

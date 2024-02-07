@@ -23,8 +23,13 @@ public class Tester {
 
     //run the sorting algorithm’s sorty method. it should record and return the time it takes
     //to sort the array
-    private double singleTest(int size) {
-        int[] arrayToSort = generateRandomArray(size);
+    private double singleTest(int size, boolean isKSorted) {
+        int[] arrayToSort;
+        if (isKSorted) {
+            arrayToSort = generateKSorted(generateRandomArray(size));
+        } else {
+            arrayToSort = generateRandomArray(size);
+        }
 
         long startTime = System.nanoTime();
         sortingAlgorithm.sort(arrayToSort);
@@ -47,15 +52,38 @@ public class Tester {
     //Should run the singleTest method as many times as the number of
     //iterations provided and print to the console the average time the algorithm takes to sort an array of
     //the given size
-    public String test(int iterations, int size) {
+    public String test(int iterations, int size, boolean isKSorted) {
         double totalTime = 0;
 
         for (int i = 0; i < iterations; i++) {
-            totalTime += singleTest(size);
+            totalTime += singleTest(size, isKSorted);
         }
 
         double averageTime = totalTime / iterations;
-        return "Average sorting time for " + sortingAlgorithm.getClass().getSimpleName() +
-                " with array size " + size + ": " + averageTime + " ms";
+        return "Sorted " + size + " elements in " + averageTime + " ms (avg).";
     }
+
+    //write a method generateKSorted(my_array) that fills the array that is
+    //passed as an argument with 10-sorted data (each element is within 10 positions of its correct position in the
+    //array).
+    //Repeat the performance experiments from problem 5, this time with 10-sorted data instead of random data.
+    //Hint: You can use shell sort to get an approximation of this by doing an iteration of k-sort with k =10
+    public int[] generateKSorted(int[] input) {
+        int n = input.length;
+
+        for (int gap = 10; gap < n; gap++) {
+            for (int i = gap; i < n; i++) {
+                int tmp = input[i];
+                int j = i;
+                while (j >= gap && input[j - gap] > tmp) {
+                    input[j] = input[j - gap];
+                    j -= gap;
+                }
+                input[j] = tmp;
+            }
+        }
+        return input;
+    }
+
+
 }
