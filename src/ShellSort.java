@@ -3,9 +3,9 @@ public class ShellSort extends SortingAlgorithm {
     public int[] sort(int[] input) {
         int n = input.length;
 
-        // Start with a large gap, then reduce the gap
+        // reduce gap size
         for (int gap = n / 2; gap > 0; gap /= 2) {
-            // Do a gapped insertion sort for this gap size
+            // insertion sort for this gap size
             for (int i = gap; i < n; i++) {
                 int temp = input[i];
                 int j;

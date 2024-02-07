@@ -7,14 +7,14 @@ public class MergeSort extends SortingAlgorithm {
 
     private void mergeSort(int[] arr, int left, int right) {
         if (left < right) {
-            // Find the middle point
+            // find the midpoint
             int mid = (left + right) / 2;
 
-            // Recursively sort both halves
+            // recursively sort both halves
             mergeSort(arr, left, mid);
             mergeSort(arr, mid + 1, right);
 
-            // Merge the sorted halves
+            // merge the sorted halves
             merge(arr, left, mid, right);
         }
     }
@@ -23,11 +23,11 @@ public class MergeSort extends SortingAlgorithm {
         int n1 = mid - left + 1;
         int n2 = right - mid;
 
-        // Create temporary arrays
+        // create the temporary arrays
         int[] leftArray = new int[n1];
         int[] rightArray = new int[n2];
 
-        // Copy data to temporary arrays
+        // copy data to temporary arrays
         for (int i = 0; i < n1; i++) {
             leftArray[i] = arr[left + i];
         }
@@ -35,7 +35,7 @@ public class MergeSort extends SortingAlgorithm {
             rightArray[j] = arr[mid + 1 + j];
         }
 
-        // Merge the temporary arrays
+        // merge the temporary arrays
 
         int i = 0, j = 0, k = left;
         while (i < n1 && j < n2) {
@@ -49,14 +49,14 @@ public class MergeSort extends SortingAlgorithm {
             k++;
         }
 
-        // Copy remaining elements of leftArray, if any
+        // copy remaining elements of leftArray, if any
         while (i < n1) {
             arr[k] = leftArray[i];
             i++;
             k++;
         }
 
-        // Copy remaining elements of rightArray, if any
+        // copy remaining elements of rightArray, if any
         while (j < n2) {
             arr[k] = rightArray[j];
             j++;

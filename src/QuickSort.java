@@ -7,10 +7,11 @@ public class QuickSort extends SortingAlgorithm {
 
     private void quickSort(int[] arr, int low, int high) {
         if (low < high) {
-            int pi = partition(arr, low, high);
+            int pivot = partition(arr, low, high);
 
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
+            //recursively sort the partitions
+            quickSort(arr, low, pivot - 1);
+            quickSort(arr, pivot + 1, high);
         }
     }
 
@@ -22,14 +23,14 @@ public class QuickSort extends SortingAlgorithm {
             if (arr[j] < pivot) {
                 i++;
 
-                // Swap arr[i] and arr[j]
+                // swap arr[i] and arr[j]
                 int temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
             }
         }
 
-        // Swap arr[i+1] and arr[high] (or pivot)
+        // swap arr[i+1] and arr[high] (or pivot)
         int temp = arr[i + 1];
         arr[i + 1] = arr[high];
         arr[high] = temp;

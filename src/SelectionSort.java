@@ -9,7 +9,7 @@ public class SelectionSort extends SortingAlgorithm {
                     minIndex = j;
                 }
             }
-            // Swap the found minimum element with the first element
+            // swap the found minimum element with the first element
             int temp = input[minIndex];
             input[minIndex] = input[i];
             input[i] = temp;
