@@ -47,7 +47,7 @@ public class Tester {
     //Should run the singleTest method as many times as the number of
     //iterations provided and print to the console the average time the algorithm takes to sort an array of
     //the given size
-    public void test(int iterations, int size) {
+    public String test(int iterations, int size) {
         double totalTime = 0;
 
         for (int i = 0; i < iterations; i++) {
@@ -55,7 +55,7 @@ public class Tester {
         }
 
         double averageTime = totalTime / iterations;
-        System.out.println("Average sorting time for " + sortingAlgorithm.getClass() +
-                " with array size " + size + ": " + averageTime + " ms");
+        return "Average sorting time for " + sortingAlgorithm.getClass().getSimpleName() +
+                " with array size " + size + ": " + averageTime + " ms";
     }
 }
